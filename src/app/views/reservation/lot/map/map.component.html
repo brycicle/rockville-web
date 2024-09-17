@@ -1,0 +1,27 @@
+<div class="card mb-4">
+    <div class="card-body" id="lot-map-container">
+        <h5 class="card-title">Lot Map</h5>
+        <div class="separator-breadcrumb border-top"></div>
+        <div #lotContainer id="lot-map">
+            <svg #svgContainer
+                 [attr.height]="lotContainer.offsetHeight-10"
+                 [attr.width]="lotContainer.offsetWidth-10"
+                 *ngIf="mapLoaded"
+                 [attr.viewBox]="viewBoxData"
+            >
+                <g *ngFor="let lot of lots3">
+<!--                    <polygon class="lot-item lot-item-shape-{{lot.status.toLowerCase()}}" [attr.points]="lot.coordinates"-->
+<!--                             fill="green" (click)="open(reserveModal,lot.lotId)"/>-->
+<!--                    <text class="lot-item" [attr.x]="lot.centerX" [attr.y]="lot.centerY" text-anchor="middle" fill="black"-->
+<!--                          font-size="1rem" (click)="open(reserveModal,lot.lotId)">-->
+                        <polygon class="lot-item lot-item-shape-{{lot.status.toLowerCase()}}" [attr.points]="lot.coordinates"
+                                 fill="green" (click)="showLot(lot.lotId)"/>
+                        <text class="lot-item" [attr.x]="lot.centerX" [attr.y]="lot.centerY" text-anchor="middle" fill="black"
+                              font-size=".7rem" (click)="showLot(lot.lotId)">
+                        B{{lot.blockNumber.replace('Block ', '')}}L{{lot.lotNumber.replace('Lot  ', '')}}
+                    </text>
+                </g>
+            </svg>
+        </div>
+    </div>
+</div>

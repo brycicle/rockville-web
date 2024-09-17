@@ -1,0 +1,586 @@
+<div class="">
+    <div class="breadcrumb">
+        <h1>Dashboard</h1>
+        <ul>
+            <li><a href="#/dashboard/v1">Main</a></li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card card-icon mb-4 shadow">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-crop-simple fa-4x"></i>
+                    <p class="text-muted text-28 mt-2 mb-1 fw-bold">Available Lots</p>
+                    <p class="lead text-24 m-0 fw-bold">{{totalAvailable}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card card-icon mb-4 shadow">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-money-bill-transfer fa-4x"></i>
+                    <p class="text-muted text-28 mt-2 fw-bold">Commission</p>
+                    <hr class="my-0">
+                    <div class="row p-0 m-0">
+                        <div class="col-6">
+                            <p class="text-muted text-28 fw-bold">Total</p>
+                            <p class="lead text-24 m-0 fw-bold">₱0</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-muted text-28 fw-bold">Disbursed</p>
+                            <p class="lead text-24 m-0 fw-bold">₱0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card card-icon mb-4 shadow">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-coins fa-4x"></i>
+                    <p class="text-muted text-28 mt-2 mb-1 fw-bold">Total Sales</p>
+                    <p class="lead text-24 m-0 fw-bold">₱0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card card-icon mb-4 shadow">
+                <div class="card-body text-center">
+                    <i class="fa-solid fa-cash-register fa-4x"></i>
+                    <p class="text-muted text-28 mt-2 mb-1 fw-bold">Closed Sales</p>
+                    <p class="lead text-24 m-0 fw-bold">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!--        <div class="col-md-3 mb-4">-->
+        <!--            <div class="card">-->
+        <!--                <div class="card-body text-center">-->
+        <!--                    <i class="i-Crop-2 text-32 me-3"></i>-->
+        <!--                    <div>-->
+        <!--                        <h4 class="text-18 mb-1">Available Lots</h4>-->
+        <!--                        <span>180</span>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        &lt;!&ndash; ICON BG &ndash;&gt;-->
+        <!--        <div class="col-lg-3 col-md-6 col-sm-6">-->
+        <!--            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">-->
+        <!--                <div class="card-body text-center">-->
+        <!--                    <i class="i-Crop-2"></i>-->
+        <!--                    <div class="content">-->
+        <!--                        <p class="text-muted mt-2 mb-0">Lots</p>-->
+        <!--                        <p class="text-primary text-24 line-height-1 mb-2">180</p>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        <div class="col-lg-3 col-md-6 col-sm-6">-->
+        <!--            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">-->
+        <!--                <div class="card-body text-center">-->
+        <!--                    <i class="i-Financial"></i>-->
+        <!--                    <div class="content">-->
+        <!--                        <p class="text-muted mt-2 mb-0">Commission</p>-->
+        <!--                        <p class="text-primary text-24 line-height-1 mb-2">₱300,000.00</p>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        <div class="col-lg-3 col-md-6 col-sm-6">-->
+        <!--            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">-->
+        <!--                <div class="card-body text-center">-->
+        <!--                    <i class="i-Checkout-Basket"></i>-->
+        <!--                    <div class="content">-->
+        <!--                        <p class="text-muted mt-2 mb-0">Reservations</p>-->
+        <!--                        <p class="text-primary text-24 line-height-1 mb-2">80</p>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--        <div class="col-lg-3 col-md-6 col-sm-6">-->
+        <!--            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">-->
+        <!--                <div class="card-body text-center">-->
+        <!--                    <i class="i-Money-2"></i>-->
+        <!--                    <div class="content">-->
+        <!--                        <p class="text-muted mt-2 mb-0">Expense</p>-->
+        <!--                        <p class="text-primary text-24 line-height-1 mb-2">120</p>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-12">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-chart-bottom o-hidden mb-4 shadow">
+                        <div class="card-body">
+                            <div class="text-muted text-28 fw-bold">Last Month Sales</div>
+                            <p class="mb-4 text-primary text-20">₱0</p>
+                        </div>
+                        <div echarts [options]="chartLineOption1" [autoResize]="false" style="height: 260px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!--            <div class="row">-->
+            <!--                <div class="col-md-12">-->
+            <!--                    <div class="card mb-4">-->
+            <!--                        <div class="card-body">-->
+            <!--                            <h6 class="mb-2 text-muted">iPhone x Stock</h6>-->
+            <!--                            <p class="mb-1 text-24 font-weight-light text-title">50%</p>-->
+            <!--                            <p class="mb-1">-->
+            <!--                                <ngb-progressbar type="success" [value]="50" height="4px"></ngb-progressbar>-->
+            <!--                            </p>-->
+            <!--                            <small class="text-muted">Most sold in last 3 days</small>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="card mb-4">-->
+            <!--                        <div class="card-body">-->
+            <!--                            <h6 class="mb-2 text-muted">iPhone 6 Stock</h6>-->
+            <!--                            <p class="mb-1 text-24 font-weight-light text-title">90%</p>-->
+            <!--                            <p class="mb-1">-->
+            <!--                                <ngb-progressbar type="danger" [value]="90" height="4px"></ngb-progressbar>-->
+            <!--                            </p>-->
+            <!--                            <small class="text-muted">Most sold in last 7 days</small>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+
+            <!--                </div>-->
+            <!--            </div>-->
+
+        </div>
+
+
+        <div class="col-lg-12 col-md-12">
+
+            <!--            <div class="card mb-4">-->
+            <!--                <div class="card-body">-->
+            <!--                    <div class="card-title">Top Selling Products</div>-->
+            <!--                    <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-3">-->
+            <!--                        <img class="avatar-lg mb-3 mb-sm-0 rounded me-sm-3" src="./assets/images/products/headphone-4.jpg" alt="">-->
+            <!--                        <div class="flex-grow-1">-->
+            <!--                            <h5 class=""><a href="">Wireless Headphone E23</a></h5>-->
+            <!--                            <p class="m-0 text-small text-muted">Lorem ipsum dolor sit amet consectetur.</p>-->
+            <!--                            <p class="text-small text-danger m-0">$450 <del class="text-muted">$500</del></p>-->
+            <!--                        </div>-->
+            <!--                        <div>-->
+            <!--                            <button class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-rounded btn-sm">View details</button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-3">-->
+            <!--                        <img class="avatar-lg mb-3 mb-sm-0 rounded me-sm-3" src="./assets/images/products/headphone-2.jpg" alt="">-->
+            <!--                        <div class="flex-grow-1">-->
+            <!--                            <h5 class=""><a href="">Wireless Headphone Y902</a></h5>-->
+            <!--                            <p class="m-0 text-small text-muted">Lorem ipsum dolor sit amet consectetur.</p>-->
+            <!--                            <p class="text-small text-danger m-0">$550 <del class="text-muted">$600</del></p>-->
+            <!--                        </div>-->
+            <!--                        <div>-->
+            <!--                            <button class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-sm btn-rounded">View details</button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-3">-->
+            <!--                        <img class="avatar-lg mb-3 mb-sm-0 rounded me-sm-3" src="./assets/images/products/headphone-3.jpg" alt="">-->
+            <!--                        <div class="flex-grow-1">-->
+            <!--                            <h5 class=""><a href="">Wireless Headphone E09</a></h5>-->
+            <!--                            <p class="m-0 text-small text-muted">Lorem ipsum dolor sit amet consectetur.</p>-->
+            <!--                            <p class="text-small text-danger m-0">$250 <del class="text-muted">$300</del></p>-->
+            <!--                        </div>-->
+            <!--                        <div>-->
+            <!--                            <button class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-sm btn-rounded">View details</button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-3">-->
+            <!--                        <img class="avatar-lg mb-3 mb-sm-0 rounded me-sm-3" src="./assets/images/products/headphone-4.jpg" alt="">-->
+            <!--                        <div class="flex-grow-1">-->
+            <!--                            <h5 class=""><a href="">Wireless Headphone X89</a></h5>-->
+            <!--                            <p class="m-0 text-small text-muted">Lorem ipsum dolor sit amet consectetur.</p>-->
+            <!--                            <p class="text-small text-danger m-0">$450 <del class="text-muted">$500</del></p>-->
+            <!--                        </div>-->
+            <!--                        <div>-->
+            <!--                            <button class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-sm btn-rounded">View details</button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <!--            <div class="card mb-4">-->
+            <!--                <div class="card-body shadow">-->
+            <!--                    <div class="card-title border-bottom d-flex align-items-center m-0 py-2 px-0">-->
+            <!--                        <span class="text-28 text-muted fw-bold">Reservation Documents</span>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-2 border-bottom justify-content-between">-->
+            <!--                        <div class="col-md-3 col-sm-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Block-Lot #</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Block 3 - Lot 4</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Customer Name</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Sample Customer 1</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Document Type</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Government ID</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 mb-2 d-flex align-items-center">-->
+            <!--                            <button class="btn btn-outline-success btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-eye"></i> View-->
+            <!--                            </button>-->
+            <!--                            <button class="btn btn-outline-primary btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-download"></i> Download-->
+            <!--                            </button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-2 border-bottom justify-content-between">-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Block-Lot #</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Block 3 - Lot 4</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Customer Name</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Sample Customer 1</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Document Type</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Passport</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 mb-2 d-flex align-items-center">-->
+            <!--                            <button class="btn btn-outline-success btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-eye"></i> View-->
+            <!--                            </button>-->
+            <!--                            <button class="btn btn-outline-primary btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-download"></i> Download-->
+            <!--                            </button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-2 border-bottom justify-content-between">-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Block-Lot #</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Block 2 - Lot 1</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Customer Name</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Sample Customer 2</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-20 text-muted">Document Type</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Government ID</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 mb-2 d-flex align-items-center">-->
+            <!--                            <button class="btn btn-outline-success btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-eye"></i> View-->
+            <!--                            </button>-->
+            <!--                            <button class="btn btn-outline-primary btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-download"></i> Download-->
+            <!--                            </button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="row mt-2 border-bottom justify-content-between">-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-small text-muted">Block-Lot #</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Block 2 - Lot 1</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-small text-muted">Customer Name</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Sample Customer 2</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 col-xs-6 mb-2">-->
+            <!--                            <span class="text-small text-muted">Document Type</span>-->
+            <!--                            <h5 class="m-0 text-22 fw-bold">Reservation Fee</h5>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-md-3 col-sm-6 mb-2 d-flex align-items-center">-->
+            <!--                            <button class="btn btn-outline-success btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-eye"></i> View-->
+            <!--                            </button>-->
+            <!--                            <button class="btn btn-outline-primary btn-lg m-1" type="button"><i-->
+            <!--                                    class="fa-solid fa-download"></i> Download-->
+            <!--                            </button>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+
+            <!--                </div>-->
+            <!--            </div>-->
+
+
+            <div class="card mb-4">
+                <div class="card-body shadow">
+                    <div class="card-title border-bottom d-flex align-items-center m-0 py-2 px-0">
+                        <span class="text-28 text-muted fw-bold">Lot/House Availabilities</span>
+                    </div>
+                    <div class="row mt-2 border-bottom justify-content-between">
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Block #</span>
+                            <h5 class="m-0 text-22 fw-bold">Block 9</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot #</span>
+                            <h5 class="m-0 text-22 fw-bold">Lot 1</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Premium</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">House Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Janelle</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Area</span>
+                            <h5 class="m-0 text-22 fw-bold">208m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Floor Area</span>
+                            <h5 class="m-0 text-22 fw-bold">117m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Price</span>
+                            <h5 class="m-0 text-22 fw-bold">{{(9075460) | currency:'PHP':'symbol'}}</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 border-bottom justify-content-between">
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Block #</span>
+                            <h5 class="m-0 text-22 fw-bold">Block 9</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot #</span>
+                            <h5 class="m-0 text-22 fw-bold">Lot 2</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Regular</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">House Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Janelle</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Area</span>
+                            <h5 class="m-0 text-22 fw-bold">213m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Floor Area</span>
+                            <h5 class="m-0 text-22 fw-bold">117m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Price</span>
+                            <h5 class="m-0 text-22 fw-bold">{{(8136420) | currency:'PHP':'symbol'}}</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 border-bottom justify-content-between">
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Block #</span>
+                            <h5 class="m-0 text-22 fw-bold">Block 9</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot #</span>
+                            <h5 class="m-0 text-22 fw-bold">Lot 3</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Premium</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">House Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Janelle</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Area</span>
+                            <h5 class="m-0 text-22 fw-bold">212m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Floor Area</span>
+                            <h5 class="m-0 text-22 fw-bold">117m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Price</span>
+                            <h5 class="m-0 text-22 fw-bold">{{(9134480) | currency:'PHP':'symbol'}}</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 border-bottom justify-content-between">
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Block #</span>
+                            <h5 class="m-0 text-22 fw-bold">Block 9</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot #</span>
+                            <h5 class="m-0 text-22 fw-bold">Lot 4</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Regular</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">House Type</span>
+                            <h5 class="m-0 text-22 fw-bold">Janelle</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Lot Area</span>
+                            <h5 class="m-0 text-22 fw-bold">212m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Floor Area</span>
+                            <h5 class="m-0 text-22 fw-bold">117m²</h5>
+                        </div>
+                        <div class="col mb-2">
+                            <span class="text-20 text-muted">Price</span>
+                            <h5 class="m-0 text-22 fw-bold">{{(8126420) | currency:'PHP':'symbol'}}</h5>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12 col-md-12">
+            <div class="card mb-4">
+                <div class="card-body shadow">
+                    <div class="card-title border-bottom d-flex align-items-center m-0 py-2 px-0">
+                        <span class="text-28 text-muted fw-bold">Lot/House Availabilities</span>
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="m-0 text-22 fw-bold">Block #</th>
+                                <th scope="col" class="m-0 text-22 fw-bold">Lot #</th>
+                                <th scope="col" class="m-0 text-22 fw-bold">Lot Type</th>
+                                <th scope="col" class="m-0 text-22 fw-bold">House Type</th>
+                                <th scope="col" class="m-0 text-22 fw-bold">Lot Area</th>
+                                <th scope="col" class="m-0 text-22 fw-bold">Floor Area</th>
+                                <th scope="col" class="m-0 text-22 fw-bold">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-20 text-muted">
+                            <td>Block 9</td>
+                            <td>Lot 1</td>
+                            <td>Premium</td>
+                            <td>Janelle</td>
+                            <td>208m²</td>
+                            <td>117m²</td>
+                            <td>₱9,075,460.00</td>
+                        </tr>
+                        <tr class="text-20 text-muted">
+                            <td>Block 9</td>
+                            <td>Lot 2</td>
+                            <td>Regular</td>
+                            <td>Janelle</td>
+                            <td>213²</td>
+                            <td>117m²</td>
+                            <td>₱8,136,420.00</td>
+                        </tr>
+                        <tr class="text-20 text-muted">
+                            <td>Block 9</td>
+                            <td>Lot 3</td>
+                            <td>Premium</td>
+                            <td>Janelle</td>
+                            <td>212²</td>
+                            <td>117m²</td>
+                            <td>₱9,134,480.00</td>
+                        </tr>
+                        <tr class="text-20 text-muted">
+                            <td>Block 9</td>
+                            <td>Lot 4</td>
+                            <td>Regular</td>
+                            <td>Janelle</td>
+                            <td>212²</td>
+                            <td>117m²</td>
+                            <td>₱8,126,420.00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--        <div class="col-md-12">-->
+        <!--            <div class="card mb-4">-->
+        <!--                <div class="card-body p-0">-->
+        <!--                    <h5 class="card-title m-0 p-3">Last 20 Days Sales</h5>-->
+        <!--                    <div echarts [options]="chartLineOption3"></div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+    </div>
+</div>
+<ng-template #createPasswordModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Create New Password</h4>
+    </div>
+    <div class="modal-body user-profile o-hidden">
+        <div class="card-body nav-center">
+            <form [formGroup]="createNewPasswordForm" (ngSubmit)="createNewPassword()">
+                <div class="col-12 needs-validation mb-3">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" class="form-control form-control-rounded" formControlName="password"
+                               type="password">
+                    </div>
+                </div>
+                <div class="col-12 needs-validation mb-3">
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input id="confirmPassword" class="form-control form-control-rounded"
+                               formControlName="confirmPassword"
+                               type="password">
+                    </div>
+                </div>
+                <div class="col-12 btn-group">
+                    <btn-loading btnClass="btn-primary btn-rounded w-100 mt-3" [loadingText]="loadingText"
+                                 [loading]="loading">
+                        Save
+                    </btn-loading>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #errorModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{modalTitle}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>{{errorMessage}}</p>
+    </div>
+</ng-template>
+
+<ng-template #viewFileModal let-modal>
+    <div class="modal-header">
+        <h2 class="modal-title text-center">RP Additional Requirements For Overseas Filipino Workers</h2>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <iframe style="width: 100%; height: 80vh;"
+                src="https://docs.google.com/gview?url=https://rockville-fs.s3.ap-southeast-2.amazonaws.com/documents/reservation/RP+ADDITIONAL+REQUIREMENTS+For+Overseas+Filipino+Workers+(OFW).docx&embedded=true"></iframe>
+    </div>
+</ng-template>
+

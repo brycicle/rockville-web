@@ -1,0 +1,83 @@
+<div class="">
+    <div class="breadcrumb">
+        <h1>Accounts</h1>
+        <ul>
+            <li><a href="#/account/list">Agents List</a></li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <!--        Filters-->
+        <!--        Table Search-->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="form-floating mb-0">
+                        <input id="reservationSearch" placeholder="Search Reservations" [formControl]="searchControl"
+                               class="form-control" type="email">
+                        <label for="reservationSearch">Search Agents</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 d-lg-block d-none">
+            <div class="card o-hidden">
+                <ngx-datatable
+                        style="height: 500px; box-shadow: none"
+                        class="material fullscreen"
+                        [columnMode]="'force'"
+                        [headerHeight]="50"
+                        [footerHeight]="50"
+                        [rowHeight]="60"
+                        [scrollbarV]="true"
+                        [rows]="filteredAccounts">
+                    <ngx-datatable-column name="username" width="auto">
+                        <ng-template ngx-datatable-header-template>
+                            Username
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.username}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Name">
+                        <ng-template ngx-datatable-header-template>
+                            Name
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.firstName}} {{row.middleName}} {{row.lastName}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="email">
+                        <ng-template ngx-datatable-header-template>
+                            Email
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.email}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="contact">
+                        <ng-template ngx-datatable-header-template>
+                            Contact Number
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.contactNumber}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="status">
+                        <ng-template ngx-datatable-header-template></ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <button class="btn btn-sm btn-outline-primary mb-1 w-100" type="button">
+                                View
+                            </button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

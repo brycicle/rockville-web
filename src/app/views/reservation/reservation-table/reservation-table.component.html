@@ -1,0 +1,813 @@
+<div class="">
+    <div class="breadcrumb">
+        <h1>Reservation</h1>
+        <ul>
+            <li><a href="#/reservation/table">Table</a></li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="row">
+        <!--        Filters-->
+        <div class="col-lg-12 d-lg-block d-none">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="card-title">Lot Filters</div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Block/Lot</span>
+                                        <input type="checkbox" [(ngModel)]="blockLotFilter">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Type</span>
+                                        <input type="checkbox" [(ngModel)]="lotType">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Size</span>
+                                        <input type="checkbox" [(ngModel)]="lotSize">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Price</span>
+                                        <input type="checkbox" [(ngModel)]="lotPrice">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="card-title">House Filters</div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Name</span>
+                                        <input type="checkbox" [(ngModel)]="house">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Price</span>
+                                        <input type="checkbox" [(ngModel)]="housePrice">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="card-title">Customer Filters</div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Name</span>
+                                        <input type="checkbox" [(ngModel)]="clientName">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Type</span>
+                                        <input type="checkbox" [(ngModel)]="customerType">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Email</span>
+                                        <input type="checkbox" [(ngModel)]="email">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Contact</span>
+                                        <input type="checkbox" [(ngModel)]="contactNumber">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="card-title">Other Filters</div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Agent</span>
+                                        <input type="checkbox" [(ngModel)]="agentName">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Created By</span>
+                                        <input type="checkbox" [(ngModel)]="createdBy">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="switch switch-primary me-3">
+                                        <span>Total</span>
+                                        <input type="checkbox" [(ngModel)]="totalPrice">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        Table Search-->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="form-floating mb-0">
+                        <input id="reservationSearch" placeholder="Search Reservations" [formControl]="searchControl"
+                               class="form-control" type="email">
+                        <label for="reservationSearch">Search Reservations</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--        Table-->
+        <div class="col-lg-12 d-lg-block d-none" *ngIf="!isMobile">
+            <div class="card o-hidden">
+                <ngx-datatable
+                        style="height: 500px; box-shadow: none"
+                        class="material fullscreen"
+                        [columnMode]="'force'"
+                        [headerHeight]="50"
+                        [footerHeight]="50"
+                        [rowHeight]="60"
+                        [scrollbarV]="true"
+                        [rows]="filteredReservations">
+                    <ngx-datatable-column name="lotBlockName" *ngIf="blockLotFilter" width="auto">
+                        <ng-template ngx-datatable-header-template>
+                            Block # - Lot #
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.lot.blockName}} - {{row.lot.lotName}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="lotType" *ngIf="lotType">
+                        <ng-template ngx-datatable-header-template>
+                            Lot Type
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.lot.type}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="lotSize" *ngIf="lotSize">
+                        <ng-template ngx-datatable-header-template>
+                            Lot Size
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.lot.size}}m²
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="lotPrice" *ngIf="lotPrice">
+                        <ng-template ngx-datatable-header-template>
+                            Lot Price
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.lotPrice | currency: 'PHP' : 'symbol'}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="house" *ngIf="house" [width]="30">
+                        <ng-template ngx-datatable-header-template>
+                            House
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.house.name}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="housePrice" *ngIf="housePrice">
+                        <ng-template ngx-datatable-header-template>
+                            House Price
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.housePrice | currency: 'PHP' : 'symbol'}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="totalPrice" *ngIf="totalPrice">
+                        <ng-template ngx-datatable-header-template>
+                            Total Price
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.housePrice + row.lotPrice | currency: 'PHP' : 'symbol'}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="clientName" *ngIf="clientName" [width]="350">
+                        <ng-template ngx-datatable-header-template>
+                            Client Name
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.customer.firstName + ' ' + row.customer.middleName + ' ' + row.customer.lastName + ' ' + row.customer.suffix}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="clientName" *ngIf="customerType">
+                        <ng-template ngx-datatable-header-template>
+                            Type
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.customer.type}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="clientName" *ngIf="email">
+                        <ng-template ngx-datatable-header-template>
+                            Email
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.customer.emailAddress}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="clientName" *ngIf="contactNumber">
+                        <ng-template ngx-datatable-header-template>
+                            Contact
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.customer.contactNumber}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="agentName" *ngIf="agentName">
+                        <ng-template ngx-datatable-header-template>
+                            Firm
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.agentName}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="agentName" *ngIf="createdBy" [width]="50">
+                        <ng-template ngx-datatable-header-template>
+                            Created By
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.createdBy}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="expiration">
+                        <ng-template ngx-datatable-header-template>
+                            Reservation Expiration
+                        </ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            {{row.expiration * 1000 | date:'MMMM-dd-yyyy'}}
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Checklist" minWidth="400">
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <div class="row">
+                                <div class="col-12" *ngIf="checklist!==null">
+                                    <button class="btn btn-rounded btn-sm m-1 tooltip-custom"
+                                            [ngClass]="{'d-none': req.type !== row.customer.type,
+                                    'btn-success bg-success': documentExists(row.id, req.requirementCode),
+                                    'btn-secondary bg-transparent': !documentExists(row.id, req.requirementCode)}"
+                                            *ngFor="let req of checklist">
+                                        <i class="fa-solid fa-check text-white"
+                                           *ngIf="documentExists(row.id, req.requirementCode)"></i>
+                                        <i class="fa-solid fa-xmark text-black-50"
+                                           *ngIf="!documentExists(row.id, req.requirementCode)"></i>
+                                        <span class="tooltip-custom-content">{{req.requirementName}}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="status">
+                        <ng-template ngx-datatable-header-template></ng-template>
+                        <ng-template let-row="row" ngx-datatable-cell-template>
+                            <button class="btn btn-sm btn-outline-primary mb-1 w-100" type="button"
+                                    (click)="openModal(reservationDetailsModal, row.id)">View
+                            </button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </div>
+        </div>
+        <div class="col-md-12 d-lg-none d-xl-none d-xxl-none d-md-block" *ngIf="isMobile">
+            <div class="card mb-4 shadow-lg" *ngFor="let reservation of filteredReservations">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5><b>Block/Lot : </b>{{reservation.lot.blockName}} - {{reservation.lot.lotName}}</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5><b>Client Name : </b>
+                                {{reservation.customer.firstName + ' ' + reservation.customer.middleName + ' ' + reservation.customer.lastName + ' ' + reservation.customer.suffix}}
+                            </h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5><b>Reservation Expiration : </b>
+                                {{reservation.expiration * 1000 | date:'MMMM-dd-yyyy'}}
+                            </h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5><b>Firm : </b>
+                                {{reservation.agentName}}
+                            </h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5><b>Created By : </b>
+                                {{reservation.createdBy}}
+                            </h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5><b>Created By : </b>
+                                {{reservation.createdBy}}
+                            </h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h5><b>Total Price : </b>
+                                {{reservation.housePrice + reservation.lotPrice | currency: 'PHP' : 'symbol'}}
+                            </h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <h5><b>Document Checklist : </b></h5>
+                            <button class="btn btn-rounded  btn-sm m-1"
+                                    [ngClass]="{'d-none': req.type !== reservation.customer.type,
+                                    'btn-success bg-success': documentExists(reservation.id, req.requirementCode),
+                                    'btn-secondary bg-transparent': !documentExists(reservation.id, req.requirementCode)}"
+                                    ngbPopover="{{req.requirement.name}}"
+                                    type="button"
+                                    *ngFor="let req of checklist">
+                                <i class="fa-solid fa-check text-white"
+                                   *ngIf="documentExists(reservation.id, req.requirementCode)"></i>
+                                <i class="fa-solid fa-xmark text-black-50"
+                                   *ngIf="!documentExists(reservation.id, req.requirementCode)"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-outline-primary w-100 mt-3" type="button"
+                                    (click)="openModal(reservationDetailsModal, reservation.id)">View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--            <div class="card o-hidden">-->
+            <!--                <ngx-datatable-->
+            <!--                        style="height: 500px; box-shadow: none"-->
+            <!--                        class="material fullscreen"-->
+            <!--                        [columnMode]="'force'"-->
+            <!--                        [headerHeight]="50"-->
+            <!--                        [footerHeight]="50"-->
+            <!--                        [rowHeight]="300"-->
+            <!--                        [scrollbarV]="true"-->
+            <!--                        [rows]="filteredReservations">-->
+            <!--                    <ngx-datatable-column name="status" [flexGrow]="1">-->
+            <!--                        <ng-template let-row="row" ngx-datatable-cell-template>-->
+            <!--                            <div class="card mb-4">-->
+            <!--                                <div class="card-body">-->
+            <!--                                    <h6 class="mb-3">Server status region 1</h6>-->
+            <!--                                    <p class="text-20 text-success line-height-1 mb-3">-->
+            <!--                                        <i class="i-Arrow-Up-in-Circle"></i> Up-->
+            <!--                                    </p>-->
+            <!--                                    <small class="text-muted">Last down 4 days ago</small>-->
+            <!--                                </div>-->
+            <!--                                <button class="btn btn-sm btn-outline-primary mb-1 w-100" type="button"-->
+            <!--                                        (click)="openModal(reservationDetailsModal, row.id)">View Details-->
+            <!--                                </button>-->
+            <!--                            </div>-->
+            <!--                        </ng-template>-->
+            <!--                    </ngx-datatable-column>-->
+            <!--                </ngx-datatable>-->
+            <!--            </div>-->
+        </div>
+    </div>
+
+</div>
+
+<ng-template #reservationDetailsModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Reservation Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body user-profile o-hidden">
+        <div class="card-body nav-center">
+            <ul ngbNav #nav="ngbNav" class="nav-tabs nav-justified">
+                <li ngbNavItem title="About">
+                    <h3><a ngbNavLink>About</a></h3>
+                    <ng-template ngbNavContent>
+                        <h4>Personal Information</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="fa-regular fa-user text-32 text-primary"></i>
+                                <p class="text-16 mt-2">Name</p>
+                                <p class="text-16" *ngIf="!isEditPersonalInfo">
+                                    <b>
+                                        {{selectedReservation.customer.firstName + ' ' + selectedReservation.customer.middleName + ' ' + selectedReservation.customer.lastName + ' ' + selectedReservation.customer.suffix}}
+                                    </b>
+                                </p>
+                                <input type="text"
+                                       class="form-control mb-3 text-center"
+                                       value="{{selectedReservation.customer.firstName + ' ' + selectedReservation.customer.middleName + ' ' + selectedReservation.customer.lastName + ' ' + selectedReservation.customer.suffix}}"
+                                       *ngIf="isEditPersonalInfo">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="fa-regular fa-envelope text-32 text-primary"></i>
+                                <p class="text-16 mt-2">Email</p>
+                                <p class="text-16" *ngIf="!isEditPersonalInfo"><b>{{selectedReservation.customer.emailAddress}}</b></p>
+                                <input type="text"
+                                       class="form-control mb-3 text-center"
+                                       value="{{selectedReservation.customer.emailAddress}}"
+                                *ngIf="isEditPersonalInfo">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="fa-solid fa-user-group text-32 text-primary"></i>
+                                <p class="text-16 mt-2">Marital Status</p>
+                                <p class="text-16" *ngIf="!isEditPersonalInfo"><b>{{selectedReservation.customer.maritalStatus}}</b></p>
+                                <input type="text"
+                                       class="form-control mb-3 text-center"
+                                       value="{{selectedReservation.customer.maritalStatus}}"
+                                       *ngIf="isEditPersonalInfo">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="fa-regular fa-map text-32 text-primary"></i>
+                                <p class="text-16 mt-2">Address</p>
+                                <p class="text-16" *ngIf="!isEditPersonalInfo"><b>{{selectedReservation.customer.address}}</b></p>
+                                <input type="text"
+                                       class="form-control mb-3 text-center"
+                                       value="{{selectedReservation.customer.address}}"
+                                       *ngIf="isEditPersonalInfo">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="fa-solid fa-phone text-32 text-primary"></i>
+                                <p class="text-16 mt-2">Mobile Number</p>
+                                <p class="text-16" *ngIf="!isEditPersonalInfo"><b>{{selectedReservation.customer.contactNumber}}</b></p>
+                                <input type="text"
+                                       class="form-control mb-3 text-center"
+                                       value="{{selectedReservation.customer.contactNumber}}"
+                                       *ngIf="isEditPersonalInfo">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="fa-solid fa-phone text-32 text-primary"></i>
+                                <p class="text-16 mt-2">Type</p>
+                                <p class="text-16" *ngIf="!isEditPersonalInfo"><b>{{selectedReservation.customer.type}}</b></p>
+                                <input type="text"
+                                       class="form-control mb-3 text-center"
+                                       value="{{selectedReservation.customer.type}}"
+                                       *ngIf="isEditPersonalInfo">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="fa-solid fa-mars-and-venus text-32 text-primary"></i>
+                                <p class="text-16 mt-2">Gender</p>
+                                <p class="text-16" *ngIf="!isEditPersonalInfo"><b>{{selectedReservation.customer.gender}}</b></p>
+                                <input type="text"
+                                       class="form-control mb-3 text-center"
+                                       value="{{selectedReservation.customer.gender}}"
+                                       *ngIf="isEditPersonalInfo">
+                            </div>
+                            <div class="col-12">
+                                <button type="button" class="btn btn-success btn-lg w-100 text-white" (click)="isEditPersonalInfo = !isEditPersonalInfo" *ngIf="!isEditPersonalInfo">
+                                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                                </button>
+                                <div class="btn-group w-100" *ngIf="isEditPersonalInfo" (click)="isEditPersonalInfo = !isEditPersonalInfo">
+                                    <button type="button" class="btn btn-outline-danger btn-lg w-100">
+                                        <i class="fa-solid fa-ban"></i> Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-outline-success btn-lg w-100">
+                                        <i class="fa-regular fa-floppy-disk"></i> Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-4 col-6">-->
+
+<!--                                <div class="mb-4">-->
+<!--                                    <p class="text-primary mb-1"><i class="i-Add-User text-16 me-1"></i> Name</p>-->
+<!--                                    <span>{{selectedReservation.customer.firstName + ' ' + selectedReservation.customer.middleName + ' ' + selectedReservation.customer.lastName + ' ' + selectedReservation.customer.suffix}}</span>-->
+<!--                                </div>-->
+<!--                                <div class="mb-4">-->
+<!--                                    <p class="text-primary mb-1"><i class="i-Edit-Map text-16 me-1"></i> Address</p>-->
+<!--                                    <span>{{selectedReservation.customer.address}}</span>-->
+<!--                                </div>-->
+<!--                                <div class="mb-4">-->
+<!--                                    <p class="text-primary mb-1"><i class="i-MaleFemale text-16 me-1"></i> Gender</p>-->
+<!--                                    <span>{{selectedReservation.customer.gender}}</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-4 col-6">-->
+<!--                                <div class="mb-4">-->
+<!--                                    <p class="text-primary mb-1"><i class="i-MaleFemale text-16 me-1"></i> Email</p>-->
+<!--                                    <span>{{selectedReservation.customer.emailAddress}}</span>-->
+<!--                                </div>-->
+<!--                                <div class="mb-4">-->
+<!--                                    <p class="text-primary mb-1"><i class="i-Telephone text-16 me-1"></i> Mobile Number-->
+<!--                                    </p>-->
+<!--                                    <span>{{selectedReservation.customer.contactNumber}}</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-4 col-6">-->
+<!--                                <div class="mb-4">-->
+<!--                                    <p class="text-primary mb-1"><i class="i-Love-User text-16 me-1"></i> Marital Status-->
+<!--                                    </p>-->
+<!--                                    <span>{{selectedReservation.customer.maritalStatus}}</span>-->
+<!--                                </div>-->
+<!--                                <div class="mb-4">-->
+<!--                                    <p class="text-primary mb-1"><i class="i-Engineering text-16 me-1"></i> Type</p>-->
+<!--                                    <span>{{selectedReservation.customer.type}}</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <hr>
+                        <h4>House/Lot Info</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="i-Home1 text-32 text-primary"></i>
+                                <p class="text-16 mt-2"><b>House</b></p>
+                                <p class="text-16">{{selectedReservation.house.name}}</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="i-Full-Screen text-32 text-primary"></i>
+                                <p class="text-16 mt-2"><b>Floor Area</b></p>
+                                <p class="text-16">{{selectedReservation.house.floorArea}}m²</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="i-Map2 text-32 text-primary"></i>
+                                <p class="text-16 mt-2"><b>Block - Lot</b></p>
+                                <p class="text-16">{{selectedReservation.lot.blockName}}
+                                    - {{selectedReservation.lot.lotName}}</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="i-Map-Marker text-32 text-primary"></i>
+                                <p class="text-16 mt-2"><b>Lot Size</b></p>
+                                <p class="text-16">{{selectedReservation.lot.size}}m²</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="i-Map text-32 text-primary"></i>
+                                <p class="text-16 mt-2"><b>Lot Type</b></p>
+                                <p class="text-16">{{selectedReservation.lot.type}}</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-6 text-center mb-4">
+                                <i class="i-Money-2 text-32 text-primary"></i>
+                                <p class="text-16 mt-2"><b>Total Price</b></p>
+                                <p class="text-16">{{selectedReservation.housePrice + selectedReservation.lotPrice | currency: 'PHP' : 'symbol'}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li ngbNavItem title="Documents">
+                    <h3><a ngbNavLink>Documents</a></h3>
+                    <ng-template ngbNavContent>
+                        <div class="row mb-4" *ngIf="!isMobile">
+                            <!-- GRID AND LIST BUTTONS -->
+                            <div class="col-6">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-outline-primary"
+                                            [ngClass]="{active: viewMode === 'list'}" (click)="viewMode = 'list'"><i
+                                            class="fa-solid fa-bars"></i></button>
+                                    <button type="button" class="btn btn-outline-primary"
+                                            [ngClass]="{active: viewMode === 'grid'}" (click)="viewMode = 'grid'"><i
+                                            class="fa-solid fa-grip"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" *ngIf="viewMode === 'list'">
+                            <div class="col-12" *ngFor="let document of reservationDocuments | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index">
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center bd-highlight">
+                                            <div>
+                                                <img alt="" class="avatar-md rounded mr-3 w-100"
+                                                     [src]="'https://rockville-fs.s3.ap-southeast-2.amazonaws.com/'+document.filePath">
+                                            </div>
+                                            <div class="">
+                                                <h6 class="m-0">Document Type</h6>
+                                                <p class="m-0 text-small text-muted">{{document.requirementName}}</p>
+                                            </div>
+                                            <div class="">
+                                                <h6 class="m-0">Uploaded By</h6>
+                                                <p class="m-0 text-small text-muted">{{document.createdBy}}</p>
+                                            </div>
+                                            <div class="">
+                                                <h6 class="m-0">Uploaded At</h6>
+                                                <p class="m-0 text-small text-muted">{{document.createdAt * 1000 | date : 'MMMM-dd-yyyy'}}</p>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-outline-danger btn-sm m-1" type="button"><i
+                                                        class="fa-solid fa-trash"></i> Delete
+                                                </button>
+                                                <button class="btn btn-outline-success btn-sm m-1" type="button"><i
+                                                        class="fa-solid fa-pen-to-square"></i> Update
+                                                </button>
+                                                <button class="btn btn-outline-primary btn-sm m-1" type="button"><i
+                                                        class="fa-solid fa-download"></i> Download
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12">
+                                <div class="card mb-2">
+                                    <div class="card-body p-0">
+                                        <div class="p-0 bd-highlight">
+                                            <div class="card card-icon-big upload-document-button"
+                                                 (click)="openAddDocumentModal(addDocumentModal)">
+                                                <div class="card-body text-center">
+                                                    <i class="i-Add-File"></i>
+                                                    <p class="text-24 line-height-1 m-0 mt-2">Upload Document</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- PAGINATION CONTROL -->
+                            <div class="col-md-12 mt-3" *ngIf="reservationDocuments?.length">
+                                <pagination-controls (pageChange)="page = $event" previousLabel=""
+                                                     nextLabel=""></pagination-controls>
+                            </div>
+
+                        </div>
+
+                        <div class="row" *ngIf="viewMode === 'grid'">
+                            <div class="col-xxl-4 col-xl-6 col-md-6"
+                                 *ngFor="let document of reservationDocuments | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index">
+                                <div class="card bg-dark text-white o-hidden mb-4">
+                                    <img class="card-img" style="min-height: '30vh'"
+                                         [src]="'https://rockville-fs.s3.ap-southeast-2.amazonaws.com/'+document.filePath"
+                                         alt="{{document.requirementCode}}">
+                                    <div class="card-img-overlay d-flex flex-column justify-content-between">
+                                        <div class="text-center pt-4">
+                                            <h5 class="card-title mb-2 text-white">{{document.requirementName}}</h5>
+                                            <div class="separator border-top mb-2"></div>
+                                            <p class="card-text">
+                                                Uploaded {{document.createdAt * 1000 | relativeTime}}</p>
+                                        </div>
+                                        <div class="row text-center d-flex justify-content-end">
+                                            <div class="p-1  font-weight-light">
+                                                <button class="btn btn-outline-light btn-sm m-1 text-white"
+                                                        type="button"><i class="fa-solid fa-trash"></i> Delete
+                                                </button>
+                                                <button class="btn btn-outline-light btn-sm m-1 text-white"
+                                                        type="button"><i class="fa-solid fa-pen-to-square"></i> Update
+                                                </button>
+                                                <button class="btn btn-outline-light btn-sm m-1 text-white"
+                                                        type="button"><i class="fa-solid fa-download"></i> Download
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add Document -->
+                            <div class="col-xxl-4 col-xl-6 col-md-6">
+                                <div class="card card-icon-big upload-document-button border-1 border-primary"
+                                     (click)="openAddDocumentModal(addDocumentModal)">
+                                    <div class="card-body text-center">
+                                        <i class="i-Add-File"></i>
+                                        <p class="text-24 line-height-1 m-0 mt-2">Upload Document</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PAGINATION CONTROL -->
+                            <div class="col-md-12 mt-3" *ngIf="reservationDocuments?.length">
+                                <pagination-controls (pageChange)="page = $event" previousLabel=""
+                                                     nextLabel=""></pagination-controls>
+                            </div>
+                        </div>
+                    </ng-template>
+                </li>
+                <li ngbNavItem title="History">
+                    <h3><a ngbNavLink>History</a></h3>
+                    <ng-template ngbNavContent>
+                        <ul class="timeline clearfix">
+                            <li class="timeline-line"></li>
+                            <li class="timeline-item"
+                                *ngFor="let history of reservationHistory.slice(0, reservationHistory.length-1)">
+                                <div class="timeline-badge">
+                                    <i class="badge-icon bg-primary text-white i-File-Pictures"
+                                       *ngIf="history.type === 'Reservation Document'"></i>
+                                </div>
+                                <div class="timeline-card card" *ngIf="history.document !== undefined">
+                                    <div class="card-body">
+                                        <div class="mb-1">
+                                            <strong class="me-1">{{history.createdBy}}</strong> {{history.action}} {{history.type}}
+                                            ({{history.document.requirementCode}})
+                                            <p class="text-muted"><i
+                                                    class="text-20 i-Clock-Back"></i> {{history.createdAt * 1000 | relativeTime}}
+                                            </p>
+                                        </div>
+                                        <img class="rounded mb-2"
+                                             src="https://rockville-fs.s3.ap-southeast-2.amazonaws.com/{{history.document.filePath}}"
+                                             alt="">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="timeline clearfix">
+                            <li class="timeline-line"></li>
+                            <li class="timeline-group text-center">
+                                <button class="btn btn-icon-text btn-success text-white"><i class="i-Calendar-4"></i>
+                                    Created
+                                    in {{reservationHistory[reservationHistory.length - 1].createdAt * 1000 | date : 'MMMM dd yyyy hh:mm:ss'}}
+                                </button>
+                            </li>
+                        </ul>
+                    </ng-template>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav"></div>
+        </div>
+    </div>
+    <div class="row p-3">
+        <div class="col-12 btn-group">
+            <button type="button" class="btn btn-outline-success" (click)="modal.dismiss('Cross click')">Close</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #addDocumentModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Add Document</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body user-profile o-hidden">
+        <div class="card-body nav-center">
+            <form [formGroup]="uploadDocumentForm">
+                <div class="col-12 needs-validation mb-3">
+                    <label for="add-document-type" class="form-label">Document Type</label>
+                    <select class="form-select"
+                            id="add-document-type"
+                            name="add-document-type"
+                            [ngModel]="documentType"
+                            (ngModelChange)="setDocumentType($event)">
+                        <option selected>Select Document Type</option>
+                        <option value="{{req.requirementCode}}" *ngFor="let req of filterDocumentsOfType(selectedReservation.customer.type)">{{req.requirementName}}</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Upload Document</label>
+                    <input type="file" class="form-control"
+                           id="file"
+                           name="file"
+                           formControlName="file"
+                           (change)="getImage($event)"
+                    >
+                    <div class="col-md-6 mx-auto py-3">
+                        <div class="card bg-dark text-white o-hidden">
+                            <img class="card-img"
+                                 [src]="filePath || 'http://placehold.it/400x600'"
+                                 alt="Reservation Fee">
+                            <div class="card-img-overlay">
+                                <div class="text-center pt-4">
+                                    <h5 class="card-title text-white">Uploaded Document</h5>
+                                    <div class="separator border-top"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+     <div class="col-12 btn-group">
+        <button type="button" class="btn btn-outline-primary" (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn btn-outline-success" (click)="modal.dismiss('Cross click')">Upload</button>
+    </div>
+</ng-template>
+

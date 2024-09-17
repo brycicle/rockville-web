@@ -1,0 +1,112 @@
+<div class="">
+    <div class="breadcrumb">
+        <h1>Files</h1>
+        <ul>
+            <li><a href="#/files">List</a></li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title border-bottom d-flex align-items-center m-0 py-2 px-0">
+                        <span class="text-28 text-muted fw-bold">Files and Documents</span>
+                    </div>
+                    <div class="row files-and-documents">
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="p-4 border border-light rounded d-flex align-items-center folder" (click)="openFolderModal(viewFolderModal, 'reservation')">
+                                <i class="folder-icon fa-regular fa-folder fa-4x mx-4"></i>
+                                <div class="folder-text">
+                                    <h4 class="text-24 mb-1 text-muted fw-bold">Reservation Process</h4>
+                                    <span class="text-20 text-muted">Files: 12</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="p-4 border border-light rounded d-flex align-items-center folder" (click)="openFolderModal(viewFolderModal, 'confirmation')">
+                                <i class="folder-icon fa-regular fa-folder fa-4x mx-4"></i>
+                                <div class="folder-text">
+                                    <h4 class="text-24 mb-1 text-muted fw-bold">Confirmation Process</h4>
+                                    <span class="text-20 text-muted">Files: 12</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="p-4 border border-light rounded d-flex align-items-center folder" (click)="openFolderModal(viewFolderModal, 'final')">
+                                <i class="folder-icon fa-regular fa-folder fa-4x mx-4"></i>
+                                <div class="folder-text">
+                                    <h4 class="text-24 mb-1 text-muted fw-bold">Final Process</h4>
+                                    <span class="text-20 text-muted">Files: 2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="p-4 border border-light rounded d-flex align-items-center folder" (click)="openFolderModal(viewFolderModal, 'others')">
+                                <i class="folder-icon fa-regular fa-folder fa-4x mx-4"></i>
+                                <div class="folder-text">
+                                    <h4 class="text-24 mb-1 text-muted fw-bold">Others</h4>
+                                    <span class="text-20 text-muted">Files: 3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #viewFolderModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Files</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body user-profile o-hidden">
+        <div class="card-body nav-center">
+            <div class="col-12 folder-files" *ngFor="let document of filteredDocuments">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="row d-flex justify-content-between align-items-center bd-highlight">
+                            <div class="col-sm-6 col-md-9">
+                                <p class="m-0 text-18 text-muted">{{document.name}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <a class="btn btn-outline-success m-1" type="button" (click)="openFileModal(viewFileModal, document.filePath, document.name)">
+                                    <i class="fa-solid fa-pen-to-square"></i> View
+                                </a>
+                                <a class="btn btn-outline-primary m-1" type="button" href="https://rockville-fs.s3.ap-southeast-2.amazonaws.com/documents/reservation/{{document.filePath}}"><i
+                                        class="fa-solid fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row p-3">
+        <div class="col-12 btn-group">
+            <button type="button" class="btn btn-outline-primary" (click)="modal.dismiss('Cross click')">Close</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #viewFileModal let-modal>
+    <div class="modal-header">
+        <h2 class="modal-title text-center">{{selectedFileName}}</h2>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <iframe contenteditable="false"  style="width: 100%; height: 80vh;" [src]="selectedDocumentPath" content="text/html; charset=utf-8"></iframe>
+    </div>
+</ng-template>
+
